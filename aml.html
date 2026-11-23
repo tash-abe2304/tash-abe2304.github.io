@@ -13,83 +13,90 @@
 <header class="topbar"><a class="logo" href="index.html">Tasha Abraham</a><a href="index.html#work">← All work</a></header>
 
 <section class="band cs-hero" style="background:var(--ink);color:#fff">
-<div class="wrap stack" style="gap:28px">
-<p style="font-size:15px;font-weight:600;color:var(--butter)">Case study · Big Data (IS459)</p>
-<h1>Catching money laundering, and noticing when tactics change</h1>
-<p class="lead" style="max-width:36em;color:#d7d9ee">A weekly pipeline on AWS that flags suspicious payments for analysts, and warns when criminals start moving money in new ways the model wasn't built to catch.</p>
-<div class="meta">
-<div style="background:var(--ink2)"><p style="color:var(--butter)">Team</p><p>6 people</p></div>
-<div style="background:var(--ink2)"><p style="color:var(--butter)">When</p><p>Aug – Nov 2026</p></div>
-<div style="background:var(--ink2)"><p style="color:var(--butter)">Built with</p><p>AWS, Spark, Streamlit</p></div>
+<div class="wrap stack" style="gap:24px">
+<p style="font-size:15px;font-weight:600;color:var(--butter)">Case study · FinTech · Big Data (IS459)</p>
+<h1>Spotting money laundering</h1>
+<p class="lead" style="max-width:36em;color:#d7d9ee">An automated system on AWS that flags suspicious payments for bank analysts, and warns when criminals change their tactics.</p>
+<div class="tldr">
+<div><h3>The problem</h3><p>Laundering hides across many accounts, and detection quietly stops working when criminals change tactics.</p></div>
+<div><h3>What we built</h3><p>A pipeline that runs every week on its own, flags suspicious payments and checks whether tactics have shifted.</p></div>
+<div><h3>The result</h3><p>About 9 in 10 alerts were real laundering, and new tactics were caught within 2 weeks.</p></div>
+<div><h3>Team &amp; tools</h3><p>6 people · Aug – Nov 2026<br>AWS, Spark, Streamlit</p></div>
 </div>
 </div>
 </section>
 
 <section class="band">
-<div class="wrap stack" style="gap:32px">
-<h2 class="h2" style="font-size:clamp(25px,2.6vw,34px)">Two questions we set out to answer</h2>
-<div class="grid2">
-<div class="tile" style="background:var(--mist);padding:32px"><p class="small" style="font-weight:600;color:var(--blue)">Question 1</p><h3 style="font-size:23px;line-height:1.15">Can we catch laundering early, without burying analysts in false alerts?</h3><p>Laundering is spread across many accounts, so checking one payment at a time misses it. Set the alert bar too low and analysts drown in false alarms; too high and real cases slip through.</p></div>
-<div class="tile" style="background:#ffe1da;padding:32px"><p class="small" style="font-weight:600;color:#b8331a">Question 2</p><h3 style="font-size:23px;line-height:1.15">Can we tell when criminals change tactics, and when to retrain?</h3><p>Detection is set up once, but criminals keep changing how they move money. When a rule stops catching them, nothing raises an alarm. Banks need an early warning.</p></div>
-</div>
-</div>
-</section>
-
-<section class="band" style="background:var(--mist)">
-<div class="wrap stack" style="gap:28px">
-<h2 class="h2" style="font-size:clamp(25px,2.6vw,34px)">How the pipeline works, every week</h2>
-<div class="pipe">
-<div><p>1 · Arrive</p><p>A new week of transactions lands and starts the pipeline on its own.</p></div>
-<div><p>2 · Clean</p><p>Spark cleans millions of rows and builds features for each account.</p></div>
-<div><p>3 · Score</p><p>A model scores every payment and groups alerts into likely schemes.</p></div>
-<div class="hot"><p>4 · Watch for change</p><p>Check whether this week's patterns have really shifted.</p></div>
-<div><p>5 · Show</p><p>Results go to a dashboard, and a person approves any retraining.</p></div>
-</div>
-<figure class="figure"><a href="assets/aml-architecture.jpg"><img src="assets/aml-architecture.jpg" alt="AWS architecture: weekly file into S3, EventBridge, Step Functions, EMR Serverless, Glue Data Catalog, Athena and a Streamlit dashboard on EC2, with CloudWatch, AWS Budgets and Terraform" width="1600" height="801"></a><figcaption>Our architecture on AWS: S3, EventBridge, Step Functions, EMR Serverless, Glue and Athena, set up with Terraform, with a Streamlit dashboard. Click to enlarge.</figcaption></figure>
-</div>
-</section>
-
-<section class="band">
-<div class="wrap stack" style="gap:32px">
-<div class="grid2" style="gap:48px;align-items:start">
-<div class="stack" style="gap:16px">
-<h2 class="h2" style="font-size:clamp(25px,2.6vw,34px)">Knowing when tactics really change</h2>
-<p class="lead" style="font-size:17px">Every week, the pipeline compares the mix of payment types, amounts, times and currencies with a normal baseline. The hard part is not crying wolf, so a change only counts if:</p>
-</div>
-<div class="stack" style="gap:12px">
-<p class="check">It's bigger than normal week-to-week noise</p>
-<p class="check">It passes a statistical test, not just a hunch</p>
-<p class="check">It lasts at least two weeks in a row</p>
-<p class="check">Honest payments haven't changed too</p>
-<p class="small muted">Then it estimates the week the change began, so the team knows where to look.</p>
-</div>
-</div>
-
-</div>
-</div>
-</section>
-
-<section class="band" style="background:var(--mist)">
-<div class="wrap stack" style="gap:28px">
-<h2 class="h2" style="font-size:clamp(25px,2.6vw,34px)">What happened</h2>
+<div class="wrap stack" style="gap:24px">
+<h2 class="h2">The problem</h2>
+<p class="lead" style="max-width:46em">Banks have to catch money laundering, but criminals are good at hiding it. We looked at three things that make it hard for the analysts who review alerts:</p>
 <div class="grid3">
-<div class="stat"><b>2 weeks</b><p>after new tactics started, the change was confirmed</p></div>
-<div class="stat"><b>0</b><p>false alarms on the control data, where nothing changed</p></div>
-<div class="stat"><b>40 → 70%</b><p>of new-tactic cases caught after the team retrained the model</p></div>
+<div class="tile" style="background:var(--mist)"><h3>Schemes hide across accounts</h3><p>Money is split and passed through many accounts, so checking one payment at a time misses the pattern.</p></div>
+<div class="tile" style="background:var(--mist)"><h3>Too many false alerts</h3><p>Set the bar too low and analysts drown in false alarms. Set it too high and real cases slip through.</p></div>
+<div class="tile" style="background:var(--mist)"><h3>Detection goes stale</h3><p>Rules are set once, but criminals keep changing how they move money, and nothing warns the bank when a rule stops working.</p></div>
 </div>
-<p class="lead" style="font-size:16px;max-width:52em">On IBM's dataset, it correctly found no tactic change. And across the whole team's pipeline, about 9 in 10 alerts on unseen data were real laundering, at a volume analysts could work through.</p>
+</div>
+</section>
+
+<section class="band" style="background:var(--mist)">
+<div class="wrap stack" style="gap:24px">
+<h2 class="h2">What we built</h2>
+<div class="grid2">
+<div class="tile" style="background:#fff;padding:28px"><p class="small" style="font-weight:600;color:var(--blue)">Part 1</p><h3 style="font-size:24px">Catch it</h3><p>A machine learning model scores every payment. Alerts are then linked together and labelled with the likely scheme, like money moving in a loop or many accounts paying into one, so analysts see the bigger picture.</p></div>
+<div class="tile" style="background:#fff;padding:28px"><p class="small" style="font-weight:600;color:#b8331a">Part 2</p><h3 style="font-size:24px">Notice when it changes</h3><p>Every week, the system compares the latest patterns with what's normal. If a real shift lasts two weeks, it emails the team, estimates when the change began, and asks a person to approve retraining the model.</p></div>
+</div>
 </div>
 </section>
 
 <section class="band">
-<div class="wrap stack" style="gap:16px;max-width:900px;margin:0 auto">
-<h2 class="h2" style="font-size:clamp(25px,2.6vw,34px)">Why it matters</h2>
-<p class="lead" style="font-size:17px">The people who own these models get an early, dated warning when criminals shift tactics, without being flooded by false alarms, and a person always approves any change to the model.</p>
+<div class="wrap stack" style="gap:24px">
+<h2 class="h2">How it works, every week</h2>
+<div class="flow">
+<div><h3>New data arrives</h3><p>A week of transactions lands and starts the pipeline automatically.</p></div>
+<div><h3>Clean it</h3><p>Millions of rows are cleaned and prepared using Spark.</p></div>
+<div><h3>Score it</h3><p>The model scores every payment and groups alerts into schemes.</p></div>
+<div><h3>Check for change</h3><p>This week's patterns are compared with normal to spot new tactics.</p></div>
+<div><h3>Show it</h3><p>Results appear on a dashboard for analysts and the team.</p></div>
+</div>
+<p class="keyidea"><strong>Built to avoid false alarms:</strong> a change only counts if it's bigger than normal week-to-week noise, passes a statistical test, lasts two weeks in a row, and honest payments haven't changed too.</p>
+<details class="tech">
+<summary>See the full technical architecture</summary>
+<div class="inner">
+<a href="assets/aml-architecture.jpg"><img src="assets/aml-architecture.jpg" alt="AWS architecture: S3, EventBridge, Step Functions, EMR Serverless, Glue Data Catalog, Athena and Streamlit on EC2, with CloudWatch, AWS Budgets and Terraform" width="1600" height="801"></a>
+<p class="small muted">S3, EventBridge, Step Functions, EMR Serverless, Glue and Athena, set up with Terraform, with a Streamlit dashboard on EC2. Click to enlarge.</p>
+</div>
+</details>
+</div>
+</section>
+
+<section class="band" style="background:var(--mist)">
+<div class="wrap stack" style="gap:24px">
+<h2 class="h2">What the dashboard shows</h2>
+<p class="lead" style="max-width:46em">Results go to a live dashboard, so analysts and model owners can see what's happening without digging through data.</p>
+<figure class="figure"><a href="assets/aml-dashboard-alerts.jpg"><img src="assets/aml-dashboard-alerts.jpg" alt="Dashboard showing alerts per day, real laundering alerts, missed laundering and false alerts, with a slider for how many alerts a team can review" width="1577" height="860"></a><figcaption><strong>For analysts:</strong> slide to the number of alerts your team can review each day and see how many are real. At the model's setting, 88% of alerts were real laundering. Click to enlarge.</figcaption></figure>
+<figure class="figure"><a href="assets/aml-dashboard-drift.jpg"><img src="assets/aml-dashboard-drift.jpg" alt="Chart of weekly change scores: the orange line with new tactics crosses the threshold and is confirmed two weeks later, while the grey control line stays below" width="1600" height="373"></a><figcaption><strong>For model owners:</strong> each week is compared with normal. The orange line is data where we introduced new tactics; it crosses the line and the change is confirmed 2 weeks later. The grey control line, where nothing changed, never sets off an alarm. Click to enlarge.</figcaption></figure>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap stack" style="gap:24px">
+<h2 class="h2">Results</h2>
+<div class="grid3">
+<div class="stat" style="background:var(--mist)"><b>9 in 10</b><p>alerts on unseen data were real laundering, at a volume analysts could work through</p></div>
+<div class="stat" style="background:var(--mist)"><b>2 weeks</b><p>to confirm new tactics, with 0 false alarms on data where nothing changed</p></div>
+<div class="stat" style="background:var(--mist)"><b>40 → 70%</b><p>of new-tactic cases caught after the model was retrained</p></div>
+</div>
+</div>
+</section>
+
+<section class="band" style="background:var(--mist)">
+<div class="wrap stack" style="gap:16px">
+<h2 class="h2">Why it matters</h2>
+<p class="lead" style="max-width:46em">Analysts get alerts they can trust, and the people who own the model get an early, dated warning when criminals shift tactics, without being flooded by false alarms. A person always approves any change to the model.</p>
 </div>
 </section>
 
 <section class="next"><div class="wrap row" style="justify-content:space-between;gap:24px"><h2 style="font-size:clamp(24px,2.6vw,34px)">Next: Coffee Meets Bagel</h2><div class="row"><a class="btn btn-coral" href="coffee-meets-bagel.html">Read it</a><a class="btn btn-line" href="index.html#work">All work</a></div></div></section>
 <footer><div class="wrap">© 2026 Tasha Maria Abraham · Singapore</div></footer>
-
 </body>
 </html>

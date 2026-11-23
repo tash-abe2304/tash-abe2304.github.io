@@ -13,14 +13,15 @@
 <header class="topbar"><a class="logo" href="index.html">Tasha Abraham</a><a href="index.html#work">← All work</a></header>
 
 <section class="band cs-hero" style="background:var(--coral)">
-<div class="wrap stack" style="gap:28px">
-<p style="font-size:15px;font-weight:600">Case study · AI in Software Engineering (SE201)</p>
-<h1>Kopi &amp; Keys: making HDB resale questions simple</h1>
-<p class="lead" style="max-width:36em">One chat where Singapore flat buyers ask in plain English and get answers quoted from official pages, plus price benchmarks from real sales.</p>
-<div class="meta">
-<div style="background:var(--ink);color:#fff"><p style="color:var(--butter)">Team</p><p>4 people</p></div>
-<div style="background:var(--ink);color:#fff"><p style="color:var(--butter)">When</p><p>Aug – Nov 2026</p></div>
-<div style="background:var(--ink);color:#fff"><p style="color:var(--butter)">Built with</p><p>LangGraph, FastAPI, React, SQL</p></div>
+<div class="wrap stack" style="gap:24px">
+<p style="font-size:15px;font-weight:600">Case study · AI chatbot · AI in Software Engineering (SE201)</p>
+<h1>Kopi &amp; Keys</h1>
+<p class="lead" style="max-width:34em">An AI chatbot that helps people buying an HDB resale flat get answers they can trust, in plain English.</p>
+<div class="tldr">
+<div><h3>The problem</h3><p>Resale rules are spread across 94 official pages, and generic chatbots can give outdated or wrong answers.</p></div>
+<div><h3>What we built</h3><p>A chatbot that quotes official HDB and CPF pages and calculates prices from 242,737 real sales.</p></div>
+<div><h3>The result</h3><p>18 of 21 price figures correct, versus 0 for the same AI without our tools.</p></div>
+<div><h3>Team &amp; tools</h3><p>4 people · Aug – Nov 2026<br>LangGraph, FastAPI, React, SQL</p></div>
 </div>
 </div>
 </section>
@@ -28,67 +29,73 @@
 <section class="band">
 <div class="wrap grid2" style="gap:56px;align-items:start">
 <div class="stack" style="gap:16px">
-<h2 class="h2" style="font-size:clamp(25px,2.6vw,34px)">The problem</h2>
-<p class="lead" style="font-size:17px">Buying a resale flat is one of the biggest decisions people make, but the information is scattered. The rules live across dozens of HDB and CPF pages, often with dated exceptions, and the price history sits in a raw spreadsheet most buyers can't analyse. A generic chatbot can sound confident while being outdated or wrong.</p>
+<h2 class="h2">The problem</h2>
+<p class="lead">Buying a resale flat is one of the biggest decisions people make, but the information is scattered. Buyers have to piece together rules from many HDB and CPF pages, and make sense of raw price data. Asking a generic chatbot is risky: it can sound confident while being out of date or simply wrong.</p>
 </div>
 <div class="grid2" style="gap:16px">
 <div class="stat" style="background:var(--mist)"><b>94</b><p>official pages holding the rules</p></div>
-<div class="stat" style="background:var(--mist)"><b>242K</b><p>resale sales since 2017, in a raw CSV</p></div>
+<div class="stat" style="background:var(--mist)"><b>242K</b><p>resale sales since 2017, in a raw spreadsheet</p></div>
 <div class="stat" style="background:var(--mist);grid-column:1/-1"><b>$634K</b><p>median HDB resale price in 2026 (Jan–Oct): a costly decision to get wrong</p></div>
 </div>
 </div>
 </section>
 
-<section class="band" style="background:var(--ink);color:#fff">
-<div class="wrap stack" style="gap:32px">
-<h2 class="h2" style="font-size:clamp(25px,2.6vw,34px);max-width:18em">The idea: AI does the language, code does anything that must be exact</h2>
-<div class="grid3">
-<div class="tile" style="background:var(--ink2)"><h3 style="color:var(--butter)">Policy answers</h3><p style="color:#d7d9ee">Quoted word for word from official HDB and CPF pages, with sources.</p></div>
-<div class="tile" style="background:var(--ink2)"><h3 style="color:var(--butter)">Price benchmarks</h3><p style="color:#d7d9ee">Medians, spread and recent sales calculated from real resale transactions.</p></div>
-<div class="tile" style="background:var(--ink2)"><h3 style="color:var(--butter)">Grants that fit</h3><p style="color:#d7d9ee">Schemes that match the buyer's situation, and what detail is still needed.</p></div>
+<section class="band" style="background:var(--mist)">
+<div class="wrap stack" style="gap:24px">
+<h2 class="h2">See it in action</h2>
+<video class="video" controls preload="metadata" poster="assets/kopi-demo-poster.jpg" playsinline>
+<source src="assets/kopi-demo.mp4" type="video/mp4">
+Your browser can't play this video.
+</video>
+<div class="watch">
+<p style="background:#fff"><b>Answers with sources</b>Policy answers quote the official page word for word, with a link to it.</p>
+<p style="background:#fff"><b>Real price benchmarks</b>Ask about a town and flat type and it calculates medians and recent sales.</p>
+<p style="background:#fff"><b>Knows its limits</b>It asks for missing details, and declines forecasts or guesses.</p>
 </div>
-<p class="lead" style="font-size:17px;color:#d7d9ee;max-width:46em">Before any answer is shown, plain code checks every quote against the source and every number against the database. If it can't verify an answer, it says so instead of guessing.</p>
 </div>
 </section>
 
 <section class="band">
 <div class="wrap stack" style="gap:24px">
-<h2 class="h2" style="font-size:clamp(25px,2.6vw,34px)">How it works</h2>
-<p class="lead" style="font-size:17px;max-width:46em">Every question takes a fixed path that code controls. The AI is only used in two places: understanding unusual questions and writing the answer. A verifier then checks every quote and number before anything reaches the user.</p>
-<figure class="figure"><a href="assets/kopi-architecture.jpg"><img src="assets/kopi-architecture.jpg" alt="Kopi and Keys architecture: query router, policy and price tools, discovery, synthesiser and verifier, with abstention paths" width="1600" height="1067"></a><figcaption>Our architecture. Yellow is the AI model, green is plain code, blue is data. Click to enlarge.</figcaption></figure>
+<h2 class="h2">How it works</h2>
+<div class="flow">
+<div><h3>Understand the question</h3><p>Works out what's being asked, and asks for missing details like flat type.</p></div>
+<div><h3>Find the facts</h3><p>Searches official HDB and CPF pages, or queries the real sales data.</p></div>
+<div><h3>Write the answer</h3><p>The AI drafts a reply using only those facts.</p></div>
+<div><h3>Check everything</h3><p>Code checks every quote against the source and every number against the data.</p></div>
+<div><h3>Answer or decline</h3><p>Shows the answer with sources, or says it can't verify one.</p></div>
+</div>
+<p class="keyidea"><strong>The key idea:</strong> the AI handles the language, and plain code handles anything that must be exact. Nothing the AI writes reaches the user unchecked.</p>
+<details class="tech">
+<summary>See the full technical architecture</summary>
+<div class="inner">
+<a href="assets/kopi-architecture.jpg"><img src="assets/kopi-architecture.jpg" alt="Kopi and Keys technical architecture: query router, policy and price tools, discovery, synthesiser and verifier" width="1600" height="1067"></a>
+<p class="small muted">Yellow is the AI model (qwen2.5:3b), green is plain code, blue is data. Built with LangGraph, FastAPI, React and LangSmith. Click to enlarge.</p>
+</div>
+</details>
 </div>
 </section>
 
 <section class="band" style="background:var(--mist)">
 <div class="wrap stack" style="gap:24px">
-<h2 class="h2" style="font-size:clamp(25px,2.6vw,34px)">What it looks like</h2>
-<div class="shots">
-<figure class="figure"><img src="assets/kopi-policy.jpg" alt="Kopi and Keys answering a question about option fees with quoted official text and a citation" width="726" height="685"><figcaption>A policy answer, quoted from the official page with its source.</figcaption></figure>
-<figure class="figure"><img src="assets/kopi-price.jpg" alt="Kopi and Keys showing median, spread and recent sale prices for 4-room flats in Tampines" width="715" height="639"><figcaption>A price benchmark, calculated straight from real resale sales.</figcaption></figure>
-</div>
-</div>
-</section>
-
-<section class="band">
-<div class="wrap stack" style="gap:28px">
-<h2 class="h2" style="font-size:clamp(25px,2.6vw,34px)">What happened</h2>
+<h2 class="h2">Results</h2>
 <div class="grid3">
-<div class="stat" style="background:var(--mist)"><b>18/21</b><p>price figures correct, versus 0/21 for the same AI without our tools</p></div>
-<div class="stat" style="background:var(--mist)"><b>94%</b><p>of test questions sent down the right path</p></div>
-<div class="stat" style="background:var(--mist)"><b>8/8</b><p>risky questions (forecasts, guarantees) safely declined</p></div>
+<div class="stat"><b>18/21</b><p>price figures correct, versus 0/21 for the same AI without our tools</p></div>
+<div class="stat"><b>94%</b><p>of test questions sent down the right path</p></div>
+<div class="stat"><b>8/8</b><p>risky questions, like forecasts and guarantees, safely declined</p></div>
 </div>
-<div class="tile" style="background:var(--mist)"><h3>What didn't work as well</h3><p class="lead" style="font-size:17px">On 40 brand-new questions, it stayed safe but became over-cautious: it declined about half of the questions it could have answered. Our rules didn't cover every way people phrase things.</p></div>
+<div class="tile" style="background:#fff"><h3>What didn't work as well</h3><p>On 40 brand-new questions it stayed safe but became over-cautious, declining about half the questions it could have answered. Our rules didn't cover every way people phrase things.</p></div>
 </div>
 </section>
 
 <section class="band">
-<div class="wrap stack" style="gap:16px;max-width:900px;margin:0 auto">
-<h2 class="h2" style="font-size:clamp(25px,2.6vw,34px)">What's next</h2>
-<p class="lead" style="font-size:17px">Handle more ways of phrasing questions, separate current rules from old ones so answers stay up to date, and test each new version on fresh questions.</p>
+<div class="wrap stack" style="gap:16px">
+<h2 class="h2">What's next</h2>
+<p class="lead" style="max-width:46em">Handle more ways of phrasing questions, separate current rules from old ones so answers stay up to date, and test each new version on fresh questions.</p>
 </div>
 </section>
 
-<section class="next"><div class="wrap row" style="justify-content:space-between;gap:24px"><h2 style="font-size:clamp(24px,2.6vw,34px)">Next: catching money laundering</h2><div class="row"><a class="btn btn-coral" href="aml.html">Read it</a><a class="btn btn-line" href="index.html#work">All work</a></div></div></section>
+<section class="next"><div class="wrap row" style="justify-content:space-between;gap:24px"><h2 style="font-size:clamp(24px,2.6vw,34px)">Next: Spotting money laundering</h2><div class="row"><a class="btn btn-coral" href="aml.html">Read it</a><a class="btn btn-line" href="index.html#work">All work</a></div></div></section>
 <footer><div class="wrap">© 2026 Tasha Maria Abraham · Singapore</div></footer>
 </body>
 </html>
