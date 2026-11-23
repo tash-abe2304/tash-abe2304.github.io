@@ -45,7 +45,7 @@
 <div class="hot"><p>4 · Watch for change</p><p>Check whether this week's patterns have really shifted.</p></div>
 <div><p>5 · Show</p><p>Results go to a dashboard, and a person approves any retraining.</p></div>
 </div>
-<p class="small muted">Built on AWS: S3, EventBridge, Step Functions, EMR Serverless, Glue and Athena, set up with Terraform, with a Streamlit dashboard.</p>
+<figure class="figure"><a href="assets/aml-architecture.jpg"><img src="assets/aml-architecture.jpg" alt="AWS architecture: weekly file into S3, EventBridge, Step Functions, EMR Serverless, Glue Data Catalog, Athena and a Streamlit dashboard on EC2, with CloudWatch, AWS Budgets and Terraform" width="1600" height="801"></a><figcaption>Our architecture on AWS: S3, EventBridge, Step Functions, EMR Serverless, Glue and Athena, set up with Terraform, with a Streamlit dashboard. Click to enlarge.</figcaption></figure>
 </div>
 </section>
 
@@ -65,25 +65,6 @@
 </div>
 </div>
 
-<div class="demo">
-<div class="row" style="justify-content:space-between;gap:16px">
-<h3 style="font-size:22px">Try it: step through 12 weeks</h3>
-<div class="row" style="gap:8px">
-<button class="round" type="button" id="prev" aria-label="Previous week">‹</button>
-<button class="round go" type="button" id="next" aria-label="Next week">›</button>
-</div>
-</div>
-<div class="chart" id="chart"><div class="line" id="line"><span>Alert line</span></div></div>
-<div class="weeks" id="weeks"></div>
-<div class="grid2" style="gap:24px;align-items:center">
-<div class="stack" style="gap:10px">
-<p class="small" style="color:#b9bcd9">Week <span id="wk">8</span>: share of payments using the new tactic</p>
-<div class="meter"><i id="meter"></i></div>
-<p id="pct" style="font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700">15%</p>
-</div>
-<div class="status" id="status" aria-live="polite"><p class="small" style="font-weight:600" id="kicker"></p><p style="font-size:18px;line-height:1.45" id="msg"></p></div>
-</div>
-<p class="small" style="color:#b9bcd9;font-size:13px">An illustration with made-up numbers to show how the check behaves. Our real tests used the IBM and SAML-D transaction datasets.</p>
 </div>
 </div>
 </section>
@@ -110,53 +91,5 @@
 <section class="next"><div class="wrap row" style="justify-content:space-between;gap:24px"><h2 style="font-size:clamp(24px,2.6vw,34px)">Next: Coffee Meets Bagel</h2><div class="row"><a class="btn btn-coral" href="coffee-meets-bagel.html">Read it</a><a class="btn btn-line" href="index.html#work">All work</a></div></div></section>
 <footer><div class="wrap">© 2026 Tasha Maria Abraham · Singapore</div></footer>
 
-<script>
-{
-const SCORE = [0.02, 0.03, 0.02, 0.025, 0.03, 0.05, 0.11, 0.16, 0.19, 0.21, 0.22, 0.22];
-const NEW = [0, 0, 0, 0, 0, 3, 9, 15, 19, 22, 24, 25];
-const MAX = 0.25, LINE = 0.08, START = 6;
-let week = 8;
-const chart = document.getElementById('chart');
-const weeksRow = document.getElementById('weeks');
-document.getElementById('line').style.bottom = (LINE / MAX * 100) + '%';
-const bars = SCORE.map((v, i) => {
-  const b = document.createElement('button');
-  b.type = 'button';
-  b.setAttribute('aria-label', 'Week ' + (i + 1));
-  b.style.height = Math.round(v / MAX * 100) + '%';
-  b.addEventListener('click', () => { week = i + 1; render(); });
-  chart.appendChild(b);
-  const s = document.createElement('span'); s.textContent = i + 1; weeksRow.appendChild(s);
-  return b;
-});
-function confirmedWeek(upTo) {
-  for (let i = 1; i < upTo; i++) if (SCORE[i] > LINE && SCORE[i - 1] > LINE) return i + 1;
-  return 0;
-}
-function render() {
-  bars.forEach((b, i) => {
-    const n = i + 1;
-    b.style.background = n > week ? '#2c2f5c' : (SCORE[i] > LINE ? '#ff6a4d' : '#8fa0ff');
-    b.classList.toggle('on', n === week);
-    b.setAttribute('aria-pressed', String(n === week));
-  });
-  document.getElementById('wk').textContent = week;
-  document.getElementById('meter').style.width = NEW[week - 1] * 4 + '%';
-  document.getElementById('pct').textContent = NEW[week - 1] + '%';
-  const c = confirmedWeek(week), above = SCORE[week - 1] > LINE;
-  let k, m, bg = '#1b1e4a', fg = '#ffffff';
-  if (week < START) { k = 'All normal'; m = 'This week looks like the baseline. No alert.'; }
-  else if (!c) { k = above ? 'Something might be changing' : 'Too small to tell'; m = above ? 'Above the line for one week. Waiting for a second week before alerting.' : 'A new tactic has started, but it is still within normal noise.'; bg = '#3a2f5c'; }
-  else { k = 'Change confirmed in week ' + c; m = 'Above the line two weeks running. Estimated start: week ' + START + '. A person is asked to approve retraining.'; bg = '#ff6a4d'; fg = '#0e1033'; }
-  const st = document.getElementById('status');
-  st.style.background = bg; st.style.color = fg;
-  document.getElementById('kicker').textContent = k;
-  document.getElementById('msg').textContent = m;
-}
-document.getElementById('prev').addEventListener('click', () => { week = Math.max(1, week - 1); render(); });
-document.getElementById('next').addEventListener('click', () => { week = Math.min(12, week + 1); render(); });
-render();
-}
-</script>
 </body>
 </html>

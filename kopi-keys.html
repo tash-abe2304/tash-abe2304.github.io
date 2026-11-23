@@ -52,21 +52,32 @@
 </section>
 
 <section class="band">
-<div class="wrap stack" style="gap:16px;max-width:900px;margin:0 auto">
-<h2 class="h2" style="font-size:clamp(25px,2.6vw,34px)">What it looks like</h2>
-<p class="lead" style="font-size:17px">Ask something like "4-room in Tampines, last 2 years" and it answers with medians, spread and recent sales calculated straight from real transactions, with the period clearly stated. Ask about a grant and it quotes the official rule, linked to its source.</p>
+<div class="wrap stack" style="gap:24px">
+<h2 class="h2" style="font-size:clamp(25px,2.6vw,34px)">How it works</h2>
+<p class="lead" style="font-size:17px;max-width:46em">Every question takes a fixed path that code controls. The AI is only used in two places: understanding unusual questions and writing the answer. A verifier then checks every quote and number before anything reaches the user.</p>
+<figure class="figure"><a href="assets/kopi-architecture.jpg"><img src="assets/kopi-architecture.jpg" alt="Kopi and Keys architecture: query router, policy and price tools, discovery, synthesiser and verifier, with abstention paths" width="1600" height="1067"></a><figcaption>Our architecture. Yellow is the AI model, green is plain code, blue is data. Click to enlarge.</figcaption></figure>
 </div>
 </section>
 
 <section class="band" style="background:var(--mist)">
+<div class="wrap stack" style="gap:24px">
+<h2 class="h2" style="font-size:clamp(25px,2.6vw,34px)">What it looks like</h2>
+<div class="shots">
+<figure class="figure"><img src="assets/kopi-policy.jpg" alt="Kopi and Keys answering a question about option fees with quoted official text and a citation" width="726" height="685"><figcaption>A policy answer, quoted from the official page with its source.</figcaption></figure>
+<figure class="figure"><img src="assets/kopi-price.jpg" alt="Kopi and Keys showing median, spread and recent sale prices for 4-room flats in Tampines" width="715" height="639"><figcaption>A price benchmark, calculated straight from real resale sales.</figcaption></figure>
+</div>
+</div>
+</section>
+
+<section class="band">
 <div class="wrap stack" style="gap:28px">
 <h2 class="h2" style="font-size:clamp(25px,2.6vw,34px)">What happened</h2>
 <div class="grid3">
-<div class="stat"><b>18/21</b><p>price figures correct, versus 0/21 for the same AI without our tools</p></div>
-<div class="stat"><b>94%</b><p>of test questions sent down the right path</p></div>
-<div class="stat"><b>8/8</b><p>risky questions (forecasts, guarantees) safely declined</p></div>
+<div class="stat" style="background:var(--mist)"><b>18/21</b><p>price figures correct, versus 0/21 for the same AI without our tools</p></div>
+<div class="stat" style="background:var(--mist)"><b>94%</b><p>of test questions sent down the right path</p></div>
+<div class="stat" style="background:var(--mist)"><b>8/8</b><p>risky questions (forecasts, guarantees) safely declined</p></div>
 </div>
-<div class="tile" style="background:#fff"><h3>What didn't work as well</h3><p class="lead" style="font-size:17px">On 40 brand-new questions, it stayed safe but became over-cautious: it declined about half of the questions it could have answered. Our rules didn't cover every way people phrase things.</p></div>
+<div class="tile" style="background:var(--mist)"><h3>What didn't work as well</h3><p class="lead" style="font-size:17px">On 40 brand-new questions, it stayed safe but became over-cautious: it declined about half of the questions it could have answered. Our rules didn't cover every way people phrase things.</p></div>
 </div>
 </section>
 
