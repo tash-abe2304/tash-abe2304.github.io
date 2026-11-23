@@ -10,7 +10,7 @@ LAYOUT hero split 60/40 (stacks on phone), full-width colour bands below
 *{box-sizing:border-box;min-width:0}
 html{scroll-behavior:smooth;scroll-padding-top:24px}
 body{margin:0;background:#fff;color:var(--ink);font:16px/1.55 Inter,system-ui,-apple-system,sans-serif;overflow-x:clip}
-img{max-width:100%;display:block}
+img{max-width:100%;height:auto;display:block}
 h1,h2,h3{font-family:"Space Grotesk",Inter,sans-serif;margin:0;letter-spacing:-.02em;line-height:1.05;text-wrap:balance}
 p,ul{margin:0}
 a{color:var(--blue)}
@@ -40,7 +40,7 @@ button{font:inherit;cursor:pointer}
 .logo{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:20px}
 
 /* hero */
-.hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);min-height:min(86svh,720px)}
+.hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);min-height:100vh;min-height:100svh}
 .hero-main{background:var(--blue);color:#fff;padding:22px max(5vw,16px) 44px;display:flex;flex-direction:column;justify-content:space-between;gap:40px}
 .nav{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
 .nav ul{list-style:none;padding:0;display:flex;gap:24px;flex-wrap:wrap;align-items:center}
@@ -49,17 +49,17 @@ button{font:inherit;cursor:pointer}
 .hero h1{font-size:clamp(48px,6vw,84px);line-height:.92;letter-spacing:-.035em}
 .hero .tag{font-size:clamp(16px,1.4vw,19px);font-weight:600;color:var(--butter)}
 .hero .chip{background:var(--blue-d);color:#fff}
-.hero-photo{background:#ffe3d9;display:flex;align-items:center;justify-content:center;padding:40px 24px}
-.hero-photo img{width:min(330px,100%);aspect-ratio:420/580;object-fit:cover;object-position:50% 40%;border-radius:999px 999px 24px 24px;box-shadow:0 0 0 10px #ffffff}
+.hero-photo{background:var(--coral);display:flex;align-items:center;justify-content:center;padding:40px 24px}
+.hero-photo img{width:min(380px,100%);aspect-ratio:420/580;object-fit:cover;object-position:50% 40%;border-radius:999px 999px 24px 24px;box-shadow:0 0 0 10px var(--peach)}
 
 /* work cards */
 .filters{display:flex;gap:8px;flex-wrap:wrap}
 .filter{min-height:44px;padding:9px 18px;border-radius:999px;border:2px solid var(--ink);background:#fff;color:var(--ink);font-weight:600;font-size:15px}
 .filter[aria-pressed=true]{background:var(--ink);color:#fff}
-.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start}
-.card{border-radius:22px;padding:26px;display:flex;flex-direction:column;gap:12px;min-height:240px}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;align-items:stretch}
+.card{border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:12px;min-height:280px}
 .card[hidden]{display:none}
-.card h3{font-size:clamp(23px,2vw,27px)}
+.card h3{font-size:clamp(21px,1.6vw,24px)}
 .card .kicker{font-size:13px;font-weight:600;opacity:.9}
 .card .more{display:flex;flex-direction:column;gap:12px;padding-top:12px;border-top:1px solid currentColor;font-size:15px}
 .card .more[hidden]{display:none}
@@ -88,7 +88,7 @@ button{font:inherit;cursor:pointer}
 .pills span{padding:6px 12px;border-radius:999px;font-size:14px}
 
 /* beyond work */
-.beyond{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
+.beyond{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:center}
 .photo-card{margin:0;background:#fff;border-radius:24px;padding:12px 12px 16px;box-shadow:0 2px 0 rgba(14,16,51,.08)}
 .photo-card img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px}
 .photo-card figcaption{font-size:15px;padding:12px 6px 0;line-height:1.45}
@@ -137,11 +137,12 @@ button{font:inherit;cursor:pointer}
 .step small{display:block;font-size:13px;font-weight:600;margin-bottom:4px}
 .step b{display:block;font-family:"Space Grotesk",sans-serif;font-size:20px}
 .step span{display:block;margin-top:6px;line-height:1.5}
-.phone{background:#ffe3d9;border-radius:32px;padding:40px 24px;display:flex;justify-content:center}
+.phone{background:var(--coral);border-radius:32px;padding:40px 24px;display:flex;justify-content:center}
 .phone img{width:min(260px,100%);border-radius:28px;border:8px solid var(--ink);background:#fff}
 
 footer{background:var(--ink);color:#b9bcd9;padding:24px max(5vw,16px);font-size:14px}
 
+@media (max-width:1100px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:860px){
 .hero{grid-template-columns:minmax(0,1fr);min-height:0}
 .hero-photo{padding:32px 16px}
