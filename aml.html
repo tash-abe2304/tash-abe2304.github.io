@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spotting money laundering · Tasha Abraham</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar"><a class="logo" href="index.html">Tasha Abraham</a><a href="index.html#work">← All work</a></header>
+
+<section class="band cs-hero" style="background:var(--ink);color:#fff">
+<div class="wrap stack" style="gap:28px">
+<p style="font-size:15px;font-weight:600;color:var(--butter)">Case study · Big Data (IS459)</p>
+<h1>Catching money laundering, and noticing when tactics change</h1>
+<p class="lead" style="max-width:36em;color:#d7d9ee">A weekly pipeline on AWS that flags suspicious payments for analysts, and warns when criminals start moving money in new ways the model wasn't built to catch.</p>
+<div class="meta">
+<div style="background:var(--ink2)"><p style="color:var(--butter)">Team</p><p>6 people</p></div>
+<div style="background:var(--ink2)"><p style="color:var(--butter)">When</p><p>Aug – Nov 2026</p></div>
+<div style="background:var(--ink2)"><p style="color:var(--butter)">Built with</p><p>AWS, Spark, Streamlit</p></div>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap stack" style="gap:32px">
+<h2 class="h2" style="font-size:clamp(30px,3.5vw,44px)">Two questions we set out to answer</h2>
+<div class="grid2">
+<div class="tile" style="background:var(--mist);padding:32px"><p class="small" style="font-weight:600;color:var(--blue)">Question 1</p><h3 style="font-size:28px;line-height:1.1">Can we catch laundering early, without burying analysts in false alerts?</h3><p>Laundering is spread across many accounts, so checking one payment at a time misses it. Set the alert bar too low and analysts drown in false alarms; too high and real cases slip through.</p></div>
+<div class="tile" style="background:#ffe1da;padding:32px"><p class="small" style="font-weight:600;color:#b8331a">Question 2</p><h3 style="font-size:28px;line-height:1.1">Can we tell when criminals change tactics, and when to retrain?</h3><p>Detection is set up once, but criminals keep changing how they move money. When a rule stops catching them, nothing raises an alarm. Banks need an early warning.</p></div>
+</div>
+</div>
+</section>
+
+<section class="band" style="background:var(--mist)">
+<div class="wrap stack" style="gap:28px">
+<h2 class="h2" style="font-size:clamp(30px,3.5vw,44px)">How the pipeline works, every week</h2>
+<div class="pipe">
+<div><p>1 · Arrive</p><p>A new week of transactions lands and starts the pipeline on its own.</p></div>
+<div><p>2 · Clean</p><p>Spark cleans millions of rows and builds features for each account.</p></div>
+<div><p>3 · Score</p><p>A model scores every payment and groups alerts into likely schemes.</p></div>
+<div class="hot"><p>4 · Watch for change</p><p>Check whether this week's patterns have really shifted.</p></div>
+<div><p>5 · Show</p><p>Results go to a dashboard, and a person approves any retraining.</p></div>
+</div>
+<p class="small muted">Built on AWS: S3, EventBridge, Step Functions, EMR Serverless, Glue and Athena, set up with Terraform, with a Streamlit dashboard.</p>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap stack" style="gap:32px">
+<div class="grid2" style="gap:48px;align-items:start">
+<div class="stack" style="gap:16px">
+<h2 class="h2" style="font-size:clamp(30px,3.5vw,44px)">Knowing when tactics really change</h2>
+<p class="lead" style="font-size:17px">Every week, the pipeline compares the mix of payment types, amounts, times and currencies with a normal baseline. The hard part is not crying wolf, so a change only counts if:</p>
+</div>
+<div class="stack" style="gap:12px">
+<p class="check">It's bigger than normal week-to-week noise</p>
+<p class="check">It passes a statistical test, not just a hunch</p>
+<p class="check">It lasts at least two weeks in a row</p>
+<p class="check">Honest payments haven't changed too</p>
+<p class="small muted">Then it estimates the week the change began, so the team knows where to look.</p>
+</div>
+</div>
+
+<div class="demo">
+<div class="row" style="justify-content:space-between;gap:16px">
+<h3 style="font-size:26px">Try it: step through 12 weeks</h3>
+<div class="row" style="gap:8px">
+<button class="round" type="button" id="prev" aria-label="Previous week">‹</button>
+<button class="round go" type="button" id="next" aria-label="Next week">›</button>
+</div>
+</div>
+<div class="chart" id="chart"><div class="line" id="line"><span>Alert line</span></div></div>
+<div class="weeks" id="weeks"></div>
+<div class="grid2" style="gap:24px;align-items:center">
+<div class="stack" style="gap:10px">
+<p class="small" style="color:#b9bcd9">Week <span id="wk">8</span>: share of payments using the new tactic</p>
+<div class="meter"><i id="meter"></i></div>
+<p id="pct" style="font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700">15%</p>
+</div>
+<div class="status" id="status" aria-live="polite"><p class="small" style="font-weight:600" id="kicker"></p><p style="font-size:18px;line-height:1.45" id="msg"></p></div>
+</div>
+<p class="small" style="color:#b9bcd9;font-size:13px">An illustration with made-up numbers to show how the check behaves. Our real tests used the IBM and SAML-D transaction datasets.</p>
+</div>
+</div>
+</section>
+
+<section class="band" style="background:var(--mist)">
+<div class="wrap stack" style="gap:28px">
+<h2 class="h2" style="font-size:clamp(30px,3.5vw,44px)">What happened</h2>
+<div class="grid3">
+<div class="stat"><b>2 weeks</b><p>after new tactics started, the change was confirmed</p></div>
+<div class="stat"><b>0</b><p>false alarms on the control data, where nothing changed</p></div>
+<div class="stat"><b>40 → 70%</b><p>of new-tactic cases caught after the team retrained the model</p></div>
+</div>
+<p class="lead" style="font-size:16px;max-width:52em">On IBM's dataset, it correctly found no tactic change. And across the whole team's pipeline, about 9 in 10 alerts on unseen data were real laundering, at a volume analysts could work through.</p>
+</div>
+</section>
+
+<section class="band">
+<div class="wrap stack" style="gap:16px;max-width:900px;margin:0 auto">
+<h2 class="h2" style="font-size:clamp(30px,3.5vw,44px)">Why it matters</h2>
+<p class="lead" style="font-size:17px">The people who own these models get an early, dated warning when criminals shift tactics, without being flooded by false alarms, and a person always approves any change to the model.</p>
+</div>
+</section>
+
+<section class="next"><div class="wrap row" style="justify-content:space-between;gap:24px"><h2 style="font-size:clamp(28px,3.5vw,44px)">Next: Coffee Meets Bagel</h2><div class="row"><a class="btn btn-coral" href="coffee-meets-bagel.html">Read it</a><a class="btn btn-line" href="index.html#work">All work</a></div></div></section>
+<footer><div class="wrap">© 2026 Tasha Maria Abraham · Singapore</div></footer>
+
+<script>
+{
+const SCORE = [0.02, 0.03, 0.02, 0.025, 0.03, 0.05, 0.11, 0.16, 0.19, 0.21, 0.22, 0.22];
+const NEW = [0, 0, 0, 0, 0, 3, 9, 15, 19, 22, 24, 25];
+const MAX = 0.25, LINE = 0.08, START = 6;
+let week = 8;
+const chart = document.getElementById('chart');
+const weeksRow = document.getElementById('weeks');
+document.getElementById('line').style.bottom = (LINE / MAX * 100) + '%';
+const bars = SCORE.map((v, i) => {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.setAttribute('aria-label', 'Week ' + (i + 1));
+  b.style.height = Math.round(v / MAX * 100) + '%';
+  b.addEventListener('click', () => { week = i + 1; render(); });
+  chart.appendChild(b);
+  const s = document.createElement('span'); s.textContent = i + 1; weeksRow.appendChild(s);
+  return b;
+});
+function confirmedWeek(upTo) {
+  for (let i = 1; i < upTo; i++) if (SCORE[i] > LINE && SCORE[i - 1] > LINE) return i + 1;
+  return 0;
+}
+function render() {
+  bars.forEach((b, i) => {
+    const n = i + 1;
+    b.style.background = n > week ? '#2c2f5c' : (SCORE[i] > LINE ? '#ff6a4d' : '#8fa0ff');
+    b.classList.toggle('on', n === week);
+    b.setAttribute('aria-pressed', String(n === week));
+  });
+  document.getElementById('wk').textContent = week;
+  document.getElementById('meter').style.width = NEW[week - 1] * 4 + '%';
+  document.getElementById('pct').textContent = NEW[week - 1] + '%';
+  const c = confirmedWeek(week), above = SCORE[week - 1] > LINE;
+  let k, m, bg = '#1b1e4a', fg = '#ffffff';
+  if (week < START) { k = 'All normal'; m = 'This week looks like the baseline. No alert.'; }
+  else if (!c) { k = above ? 'Something might be changing' : 'Too small to tell'; m = above ? 'Above the line for one week. Waiting for a second week before alerting.' : 'A new tactic has started, but it is still within normal noise.'; bg = '#3a2f5c'; }
+  else { k = 'Change confirmed in week ' + c; m = 'Above the line two weeks running. Estimated start: week ' + START + '. A person is asked to approve retraining.'; bg = '#ff6a4d'; fg = '#0e1033'; }
+  const st = document.getElementById('status');
+  st.style.background = bg; st.style.color = fg;
+  document.getElementById('kicker').textContent = k;
+  document.getElementById('msg').textContent = m;
+}
+document.getElementById('prev').addEventListener('click', () => { week = Math.max(1, week - 1); render(); });
+document.getElementById('next').addEventListener('click', () => { week = Math.min(12, week + 1); render(); });
+render();
+}
+</script>
+</body>
+</html>
