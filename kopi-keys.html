@@ -27,10 +27,10 @@
 <h1>Kopi &amp; Keys</h1>
 <p class="lead" style="max-width:34em">An AI chatbot that helps people buying an HDB resale flat get answers they can trust, in plain English.</p>
 <div class="tldr">
-<div><h3>The problem</h3><p>Resale rules are spread across 94 official pages, and generic chatbots can give outdated or wrong answers.</p></div>
-<div><h3>What we built</h3><p>A chatbot that quotes official HDB and CPF pages and calculates prices from 242,737 real sales.</p></div>
-<div><h3>The result</h3><p>18 of 21 price figures correct, versus 0 for the same AI without our tools.</p></div>
-<div><h3>Team &amp; tools</h3><p>4 people · Aug – Nov 2026<br>LangGraph, FastAPI, React, SQL</p></div>
+<div><h3>The Problem</h3><p>Resale rules are spread across 95 official pages, and generic chatbots can give outdated or wrong answers.</p></div>
+<div><h3>What We Built</h3><p>A chatbot that quotes official HDB and CPF pages and calculates prices from 242,737 real sales.</p></div>
+<div><h3>The Result</h3><p>18 of 21 price figures correct, versus 0 for the same model (Qwen2.5:3b) without our tools.</p></div>
+<div><h3>Team &amp; Tools</h3><p>4 people · Aug – Nov 2026<br>LangGraph, LangSmith, FastAPI, React, SQLite<br>Data: HDB, CPF, data.gov.sg</p></div>
 </div>
 </div>
 </section>
@@ -42,7 +42,7 @@
 <p class="lead">Buying a resale flat is one of the biggest decisions people make, but the information is scattered. Buyers have to piece together rules from many HDB and CPF pages, and make sense of raw price data. Asking a generic chatbot is risky: it can sound confident while being out of date or simply wrong.</p>
 </div>
 <div class="grid2" style="gap:16px">
-<div class="stat" style="background:var(--mist)"><b>94</b><p>official pages holding the rules</p></div>
+<div class="stat" style="background:var(--mist)"><b>95</b><p>official pages holding the rules</p></div>
 <div class="stat" style="background:var(--mist)"><b>242K</b><p>resale sales since 2017, in a raw spreadsheet</p></div>
 <div class="stat" style="background:var(--mist);grid-column:1/-1"><b>$634K</b><p>median HDB resale price in 2026 (Jan–Oct): a costly decision to get wrong</p></div>
 </div>
@@ -89,12 +89,13 @@ Your browser can't play this video.
 <section class="band" style="background:var(--mist)">
 <div class="wrap stack" style="gap:24px">
 <h2 class="h2">Results</h2>
+<p class="muted" style="margin:-12px 0 0">On our 50-question test set, which we also used while building it.</p>
 <div class="grid3">
-<div class="stat"><b>18/21</b><p>price figures correct, versus 0/21 for the same AI without our tools</p></div>
+<div class="stat"><b>18/21</b><p>price figures correct, versus 0/21 for the same model without our tools</p></div>
 <div class="stat"><b>94%</b><p>of test questions sent down the right path</p></div>
 <div class="stat"><b>8/8</b><p>risky questions, like forecasts and guarantees, safely declined</p></div>
 </div>
-<div class="tile" style="background:#fff"><h3>What didn't work as well</h3><p>On 40 brand-new questions it stayed safe but became over-cautious, declining about half the questions it could have answered. Our rules didn't cover every way people phrase things.</p></div>
+<div class="tile" style="background:#fff"><h3>What didn't work as well</h3><p>On 40 brand-new questions, every answer it gave still had sources, but it became over-cautious: it declined about half the questions it could have answered, and routing accuracy dropped from 94% to 80%. Our rules didn't cover every way people phrase things.</p></div>
 </div>
 </section>
 
