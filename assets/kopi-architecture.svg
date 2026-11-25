@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 810" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Arial, sans-serif" role="img" aria-label="How Kopi and Keys answers a question" xmlns:c2pa="http://c2pa.org/manifest">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#3a3d5c"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#d9472b"/></marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#7a7d99"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5b7bd6"/></marker>
+  </defs>
+  <rect width="1700" height="810" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="40" y="52" font-size="26" font-weight="700" fill="#0e1033">How Kopi &amp; Keys answers a question</text>
+  <text x="40" y="80" font-size="15" fill="#4a4d6b">One LangGraph workflow. The AI writes the words; plain code finds the facts and checks them.</text>
+
+  <!-- Legend -->
+  <g font-size="13" fill="#33365a">
+    <rect x="1040" y="38" width="16" height="16" rx="4" fill="#fff3c4" stroke="#d9a400"/><text x="1062" y="51">AI model</text>
+    <rect x="1140" y="38" width="16" height="16" rx="4" fill="#dff3e4" stroke="#3f9b5a"/><text x="1162" y="51">Plain code</text>
+    <rect x="1250" y="38" width="16" height="16" rx="4" fill="#dde8ff" stroke="#5b7bd6"/><text x="1272" y="51">Data</text>
+    <rect x="1320" y="38" width="16" height="16" rx="4" fill="#ffe3dc" stroke="#d9472b"/><text x="1342" y="51">In the chat (React)</text>
+  </g>
+
+  <!-- Decline bus -->
+  <g fill="none" stroke="#d9472b" stroke-width="1.6">
+    <path d="M380 375 V150 H1460" marker-end="url(#ar)"/>
+    <path d="M995 375 V150"/>
+    <path d="M1600 375 V192" marker-end="url(#ar)"/>
+  </g>
+  <g font-size="13" font-style="italic" fill="#d9472b">
+    <text x="392" y="196">Out of scope</text>
+    <text x="1007" y="196">No usable evidence</text>
+    <text x="1588" y="262" text-anchor="end">Fails again, or model error</text>
+  </g>
+
+  <!-- Main flow arrows -->
+  <g fill="none" stroke="#3a3d5c" stroke-width="1.6">
+    <path d="M210 435 H268" marker-end="url(#a)"/>
+    <path d="M490 435 H530 V335 H568" marker-end="url(#a)"/>
+    <path d="M530 435 V535 H568" marker-end="url(#a)"/>
+    <path d="M695 385 V483" marker-end="url(#a)"/>
+    <path d="M820 335 H855 V420 H888" marker-end="url(#a)"/>
+    <path d="M820 535 H855 V450 H888" marker-end="url(#a)"/>
+    <path d="M1100 435 H1178" marker-end="url(#a)"/>
+    <path d="M1390 435 H1458" marker-end="url(#a)"/>
+    <path d="M1565 495 V623" marker-end="url(#a)"/>
+  </g>
+  <text x="707" y="440" font-size="13" font-style="italic" fill="#4a4d6b">Mixed questions:</text>
+  <text x="707" y="457" font-size="13" font-style="italic" fill="#4a4d6b">prices next</text>
+  <text x="1555" y="565" font-size="13" font-style="italic" fill="#4a4d6b" text-anchor="end">Passes every check</text>
+
+  <!-- Repair loop -->
+  <path d="M1500 375 V332 H1285 V373" fill="none" stroke="#7a7d99" stroke-width="1.6" marker-end="url(#ag)"/>
+  <text x="1392" y="302" font-size="13" font-style="italic" fill="#5a5d78" text-anchor="middle">Fails a check: one repair</text>
+  <text x="1392" y="320" font-size="12" font-style="italic" fill="#5a5d78" text-anchor="middle">(with one extra policy search if evidence was missing)</text>
+
+  <!-- Clarify path -->
+  <path d="M380 495 V780 H1285 V497" fill="none" stroke="#7a7d99" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#ag)"/>
+  <text x="832" y="770" font-size="13" font-style="italic" fill="#5a5d78" text-anchor="middle">Missing details, like flat type: ask a clarifying question instead</text>
+
+  <!-- Data links -->
+  <g fill="none" stroke="#5b7bd6" stroke-width="1.4" stroke-dasharray="5 4">
+    <path d="M695 252 V283" marker-end="url(#ab)"/>
+    <path d="M695 623 V587" marker-end="url(#ab)"/>
+    <path d="M995 623 V497" marker-end="url(#ab)"/>
+  </g>
+
+  <!-- In / out boxes -->
+  <g>
+    <rect x="40" y="390" width="170" height="90" rx="14" fill="#ffe3dc" stroke="#d9472b" stroke-width="1.5"/>
+    <text x="125" y="428" font-size="16" font-weight="700" fill="#0e1033" text-anchor="middle">User's question</text>
+    <text x="125" y="450" font-size="13" fill="#33365a" text-anchor="middle">typed in the chat</text>
+
+    <rect x="1460" y="110" width="210" height="80" rx="14" fill="#ffe3dc" stroke="#d9472b" stroke-width="1.5"/>
+    <text x="1565" y="144" font-size="16" font-weight="700" fill="#0e1033" text-anchor="middle">Polite decline</text>
+    <text x="1565" y="166" font-size="13" fill="#33365a" text-anchor="middle">says it can't answer safely</text>
+
+    <rect x="1460" y="625" width="210" height="80" rx="14" fill="#ffe3dc" stroke="#d9472b" stroke-width="1.5"/>
+    <text x="1565" y="659" font-size="16" font-weight="700" fill="#0e1033" text-anchor="middle">Answer</text>
+    <text x="1565" y="681" font-size="13" fill="#33365a" text-anchor="middle">with sources linked</text>
+  </g>
+
+  <!-- Process boxes -->
+  <g text-anchor="middle">
+    <rect x="270" y="375" width="220" height="120" rx="14" fill="#dff3e4" stroke="#3f9b5a" stroke-width="1.5"/>
+    <text x="380" y="410" font-size="17" font-weight="700" fill="#0e1033">Query Router</text>
+    <text x="380" y="434" font-size="13" fill="#33365a">Reads the question</text>
+    <text x="380" y="452" font-size="13" fill="#33365a">and picks a route</text>
+    <rect x="300" y="463" width="160" height="22" rx="11" fill="#fff3c4" stroke="#d9a400"/>
+    <text x="380" y="479" font-size="12" fill="#5c4a00">Rules first, LLM fallback</text>
+
+    <rect x="570" y="285" width="250" height="100" rx="14" fill="#dff3e4" stroke="#3f9b5a" stroke-width="1.5"/>
+    <text x="695" y="320" font-size="17" font-weight="700" fill="#0e1033">Policy Retrieval</text>
+    <text x="695" y="344" font-size="13" fill="#33365a">Finds official HDB and CPF text</text>
+    <text x="695" y="362" font-size="13" fill="#33365a">for policy questions</text>
+
+    <rect x="570" y="485" width="250" height="100" rx="14" fill="#dff3e4" stroke="#3f9b5a" stroke-width="1.5"/>
+    <text x="695" y="520" font-size="17" font-weight="700" fill="#0e1033">Price Query</text>
+    <text x="695" y="544" font-size="13" fill="#33365a">Runs SQL on real resale sales;</text>
+    <text x="695" y="562" font-size="13" fill="#33365a">code does all the maths</text>
+
+    <rect x="890" y="375" width="210" height="120" rx="14" fill="#dff3e4" stroke="#3f9b5a" stroke-width="1.5"/>
+    <text x="995" y="412" font-size="17" font-weight="700" fill="#0e1033">Topic Cards</text>
+    <text x="995" y="436" font-size="13" fill="#33365a">Adds related grants</text>
+    <text x="995" y="454" font-size="13" fill="#33365a">and rules worth knowing</text>
+
+    <rect x="1180" y="375" width="210" height="120" rx="14" fill="#fff3c4" stroke="#d9a400" stroke-width="1.5"/>
+    <text x="1285" y="412" font-size="17" font-weight="700" fill="#0e1033">Synthesiser</text>
+    <text x="1285" y="436" font-size="13" fill="#33365a">Qwen2.5:3b drafts the</text>
+    <text x="1285" y="454" font-size="13" fill="#33365a">reply from the evidence only</text>
+
+    <rect x="1460" y="375" width="210" height="120" rx="14" fill="#dff3e4" stroke="#3f9b5a" stroke-width="1.5"/>
+    <text x="1565" y="412" font-size="17" font-weight="700" fill="#0e1033">Verifier</text>
+    <text x="1565" y="436" font-size="13" fill="#33365a">Checks every quote and</text>
+    <text x="1565" y="454" font-size="13" fill="#33365a">number against the source</text>
+  </g>
+
+  <!-- Data stores -->
+  <g text-anchor="middle">
+    <path d="M590 190 v48 a105 14 0 0 0 210 0 v-48" fill="#dde8ff" stroke="#5b7bd6" stroke-width="1.5"/>
+    <ellipse cx="695" cy="190" rx="105" ry="14" fill="#eef3ff" stroke="#5b7bd6" stroke-width="1.5"/>
+    <text x="695" y="222" font-size="15" font-weight="600" fill="#0e1033">Policy index</text>
+    <text x="695" y="241" font-size="12" fill="#33365a">ChromaDB vectors + BM25</text>
+
+    <path d="M590 640 v48 a105 14 0 0 0 210 0 v-48" fill="#dde8ff" stroke="#5b7bd6" stroke-width="1.5"/>
+    <ellipse cx="695" cy="640" rx="105" ry="14" fill="#eef3ff" stroke="#5b7bd6" stroke-width="1.5"/>
+    <text x="695" y="672" font-size="15" font-weight="600" fill="#0e1033">HDB resale database</text>
+    <text x="695" y="691" font-size="12" fill="#33365a">SQLite · 242,737 sales</text>
+
+    <path d="M905 640 v48 a90 14 0 0 0 180 0 v-48" fill="#dde8ff" stroke="#5b7bd6" stroke-width="1.5"/>
+    <ellipse cx="995" cy="640" rx="90" ry="14" fill="#eef3ff" stroke="#5b7bd6" stroke-width="1.5"/>
+    <text x="995" y="672" font-size="15" font-weight="600" fill="#0e1033">Topic cards</text>
+    <text x="995" y="691" font-size="12" fill="#33365a">12 JSON cards</text>
+  </g>
+<metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTo1ZTBkNTBmYi0xMDI0LTQwNmMtODE5YS0zOTBiYWFlMTM4MzMAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaFMaJUdPdK5o2YaHm19lNdcAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDo1MmMyZGY4Zi02OTFjLTQwZjEtODM1Ny05NTFhODg4M2I1ZTdscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoVZfANWPzOU+nlpnJC8bhdQAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggurI7cqnCrsBc1EKu7qF/8xhSJSJL1dco2wO+u1ZiTgakZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaOc/OJH0RxZXWiAtkPDn2pUAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRMAAAAAAAAAAAAAAAAZGhhc2hYIIkXksC0i22haE8DJhbbOh4HmEQ8zOPpW8ePa1vIidJIZG5hbWVuanVtYmYgbWFuaWZlc3RqZXhjbHVzaW9uc4GiZXN0YXJ0GSNZZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjVlMGQ1MGZiLTEwMjQtNDA2Yy04MTlhLTM5MGJhYWUxMzgzMy9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjVhMGE1Y2M4LWI3NGUtNDcxMS04ZDgwLTc3MGY0YzM3YjE5MnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCC6sjtyqcKuwFzUQq7uoX/zGFIlIkvV1yjbA767VmJOBqJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggq+5hpTGWJpbBuTE+XXymnXLpCkK7gavad1uwnYlmcS6iY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggAFzMiYsEUlmOb13kWf6SpkaNLK1jmfytlI7QLYiBrXF0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQFVP78WL9rpiDHTKwDlgTyK+evAkY/M2cExGdzfG42x7ptJg3Hk06hDDhd8gjDlwUMxhbmCPaNf5yMF3GXooxrQ=</c2pa:manifest></metadata></svg>
