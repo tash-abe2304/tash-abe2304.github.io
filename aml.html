@@ -51,8 +51,8 @@
 <div class="wrap stack" style="gap:24px">
 <h2 class="h2">What We Built</h2>
 <div class="grid2">
-<div class="tile" style="background:#fff;padding:28px"><p class="small" style="font-weight:600;color:var(--blue)">Part 1</p><h3 style="font-size:24px">Catch it</h3><p>A machine learning model scores every payment. Alerts are then linked together and given a suggested scheme label (still experimental), like money moving in a loop or many accounts paying into one, so analysts see the bigger picture.</p></div>
-<div class="tile" style="background:#fff;padding:28px"><p class="small" style="font-weight:600;color:#b8331a">Part 2</p><h3 style="font-size:24px">Notice when it changes</h3><p>Every week, the system compares the latest patterns with what's normal. If a real shift lasts two weeks, it emails the team, estimates when the change began, and asks a person to approve retraining the model.</p></div>
+<div class="tile" style="background:#fff;padding:28px"><p class="small" style="font-weight:600;color:var(--blue)">Part 1</p><h3 style="font-size:24px">Catch it</h3><p>A machine learning model (LightGBM) scores every payment. Alerts are then linked together and given a suggested scheme label (still experimental), like money moving in a loop or many accounts paying into one, so analysts see the bigger picture.</p></div>
+<div class="tile" style="background:#fff;padding:28px"><p class="small" style="font-weight:600;color:#b8331a">Part 2</p><h3 style="font-size:24px">Notice when it changes</h3><p>Every week, the system compares the latest patterns with what's normal. If a real shift lasts two weeks, it emails the team, estimates when the change began, and asks a person to approve retraining the model.</p><p class="small muted">To test this, we gradually switched on four new laundering tactics partway through a synthetic dataset, and kept a copy where nothing changed to check for false alarms.</p></div>
 </div>
 </div>
 </section>
@@ -61,7 +61,7 @@
 <div class="wrap stack" style="gap:24px">
 <h2 class="h2">How It Works, Every Week</h2>
 <div class="flow">
-<div><h3>New data arrives</h3><p>A week of transactions lands and starts the pipeline automatically.</p></div>
+<div><h3>New data arrives</h3><p>Each week of (synthetic) bank payments is dropped in, like a bank's weekly feed, and starts the pipeline automatically.</p></div>
 <div><h3>Clean it</h3><p>Millions of rows are cleaned and prepared using Spark.</p></div>
 <div><h3>Score it</h3><p>The model scores every payment and groups alerts into schemes.</p></div>
 <div><h3>Check for change</h3><p>This week's patterns are compared with normal to spot new tactics.</p></div>
@@ -95,6 +95,7 @@
 <div class="stat" style="background:var(--mist)"><b>2 weeks</b><p>to confirm new tactics, with 0 false alarms on data where nothing changed</p></div>
 <div class="stat" style="background:var(--mist)"><b>40 → 70%</b><p>of new-tactic cases caught after the model was retrained</p></div>
 </div>
+<div class="tile" style="background:var(--mist)"><h3>The trade-off</h3><p>The model is set to balance false alarms against missed cases. That keeps alerts trustworthy, but it catches about half of all laundering (52%). Most of what it misses doesn't follow any of the known patterns it learned from.</p></div>
 </div>
 </section>
 
