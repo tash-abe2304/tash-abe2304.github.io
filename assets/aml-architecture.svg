@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 990" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Arial, sans-serif" role="img" aria-label="How the AML pipeline runs on AWS" xmlns:c2pa="http://c2pa.org/manifest">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#3a3d5c"/></marker>
+  </defs>
+  <rect width="1700" height="990" fill="#ffffff"/>
+
+  <text x="40" y="52" font-size="26" font-weight="700" fill="#0e1033">How the AML pipeline runs on AWS</text>
+  <text x="40" y="80" font-size="15" fill="#4a4d6b">About 13 million payments a week flow through an S3 data lake, processed by Spark on EMR Serverless and run by Step Functions.</text>
+
+  <g font-size="13" fill="#33365a">
+    <rect x="1010" y="38" width="16" height="16" rx="4" fill="#fff3c4" stroke="#d9a400"/><text x="1032" y="51">Trigger</text>
+    <rect x="1100" y="38" width="16" height="16" rx="4" fill="#dff3e4" stroke="#3f9b5a"/><text x="1122" y="51">Processing</text>
+    <rect x="1210" y="38" width="16" height="16" rx="4" fill="#dde8ff" stroke="#5b7bd6"/><text x="1232" y="51">Storage (S3)</text>
+    <rect x="1330" y="38" width="16" height="16" rx="4" fill="#ffe3dc" stroke="#d9472b"/><text x="1352" y="51">People, alerts, dashboard</text>
+  </g>
+
+  <!-- Lane backgrounds -->
+  <rect x="24" y="112" width="1652" height="318" rx="18" fill="#f6f7fd"/>
+  <rect x="24" y="450" width="1652" height="250" rx="18" fill="#f6f7fd"/>
+  <rect x="24" y="720" width="1652" height="150" rx="18" fill="#f6f7fd"/>
+  <g font-size="12.5" font-weight="700" fill="#2340ff" letter-spacing="0.5">
+    <text x="44" y="140">EVERY WEEK · PART 1: CATCH IT</text>
+    <text x="44" y="478">EVERY WEEK · PART 2: NOTICE WHEN IT CHANGES</text>
+    <text x="44" y="748">ONCE, STARTED BY HAND · TRAIN THE MODEL</text>
+  </g>
+
+  <!-- Data lake band -->
+  <rect x="44" y="296" width="1300" height="122" rx="16" fill="#eef3ff" stroke="#5b7bd6" stroke-width="1.5"/>
+  <text x="62" y="404" font-size="12.5" font-weight="700" fill="#3552b8" letter-spacing="0.5">S3 DATA LAKE · PARQUET, PARTITIONED BY WEEK · TABLES CATALOGUED IN GLUE</text>
+  <g text-anchor="middle">
+    <rect x="60" y="306" width="270" height="68" rx="12" fill="#dde8ff" stroke="#5b7bd6" stroke-width="1.3"/>
+    <text x="195" y="334" font-size="15" font-weight="700" fill="#0e1033">raw/ · bronze</text>
+    <text x="195" y="355" font-size="12.5" fill="#33365a">payments exactly as delivered</text>
+    <rect x="345" y="306" width="310" height="68" rx="12" fill="#dde8ff" stroke="#5b7bd6" stroke-width="1.3"/>
+    <text x="500" y="334" font-size="15" font-weight="700" fill="#0e1033">curated/ · silver</text>
+    <text x="500" y="355" font-size="12.5" fill="#33365a">cleaned, checked payments</text>
+    <rect x="670" y="306" width="310" height="68" rx="12" fill="#dde8ff" stroke="#5b7bd6" stroke-width="1.3"/>
+    <text x="825" y="334" font-size="15" font-weight="700" fill="#0e1033">features/ · gold</text>
+    <text x="825" y="355" font-size="12.5" fill="#33365a">179 features for every payment</text>
+    <rect x="995" y="306" width="330" height="68" rx="12" fill="#dde8ff" stroke="#5b7bd6" stroke-width="1.3"/>
+    <text x="1160" y="334" font-size="15" font-weight="700" fill="#0e1033">analytics/ · gold</text>
+    <text x="1160" y="355" font-size="12.5" fill="#33365a">scores, alerts and schemes by week</text>
+  </g>
+
+  <!-- Lane A flow arrows -->
+  <g fill="none" stroke="#3a3d5c" stroke-width="1.6">
+    <path d="M124 260 V304" marker-end="url(#a)"/>
+    <path d="M315 304 V262" marker-end="url(#a)"/>
+    <path d="M470 210 H558" marker-end="url(#a)"/>
+    <path d="M600 262 V304" marker-end="url(#a)"/>
+    <path d="M740 262 V304" marker-end="url(#a)"/>
+    <path d="M780 210 H868" marker-end="url(#a)"/>
+    <path d="M900 304 V262" marker-end="url(#a)"/>
+    <path d="M1060 262 V304" marker-end="url(#a)"/>
+    <path d="M1325 340 H1418" marker-end="url(#a)"/>
+  </g>
+  <g font-size="12" font-style="italic" fill="#5a5d78">
+    <text x="136" y="286">lands in raw/</text>
+    <text x="327" y="286">new-week event</text>
+    <text x="824" y="198" text-anchor="middle">data ready</text>
+    <text x="1382" y="330" text-anchor="middle">via Athena</text>
+  </g>
+
+  <g text-anchor="middle">
+    <rect x="44" y="160" width="160" height="100" rx="14" fill="#ffe3dc" stroke="#d9472b" stroke-width="1.5"/>
+    <text x="124" y="198" font-size="16" font-weight="700" fill="#0e1033">Weekly file</text>
+    <text x="124" y="220" font-size="12.5" fill="#33365a">~13M payments,</text>
+    <text x="124" y="237" font-size="12.5" fill="#33365a">like a bank's feed</text>
+
+    <rect x="300" y="160" width="170" height="100" rx="14" fill="#fff3c4" stroke="#d9a400" stroke-width="1.5"/>
+    <text x="385" y="198" font-size="16" font-weight="700" fill="#0e1033">EventBridge</text>
+    <text x="385" y="220" font-size="12.5" fill="#33365a">sees the new week</text>
+    <text x="385" y="237" font-size="12.5" fill="#33365a">and starts the run</text>
+
+    <rect x="560" y="150" width="220" height="112" rx="14" fill="#dff3e4" stroke="#3f9b5a" stroke-width="1.5"/>
+    <text x="670" y="184" font-size="16" font-weight="700" fill="#0e1033">Prepare (Spark)</text>
+    <text x="670" y="206" font-size="12.5" fill="#33365a">cleans the week and</text>
+    <text x="670" y="223" font-size="12.5" fill="#33365a">builds features at scale</text>
+    <text x="670" y="248" font-size="11.5" fill="#3f9b5a">aml_prepare</text>
+
+    <rect x="870" y="150" width="230" height="112" rx="14" fill="#dff3e4" stroke="#3f9b5a" stroke-width="1.5"/>
+    <text x="985" y="184" font-size="16" font-weight="700" fill="#0e1033">Score (Spark)</text>
+    <text x="985" y="206" font-size="12.5" fill="#33365a">the champion LightGBM model</text>
+    <text x="985" y="223" font-size="12.5" fill="#33365a">scores every payment</text>
+    <text x="985" y="248" font-size="11.5" fill="#3f9b5a">aml_bq1_score</text>
+
+    <rect x="1420" y="290" width="236" height="100" rx="14" fill="#ffe3dc" stroke="#d9472b" stroke-width="1.5"/>
+    <text x="1538" y="328" font-size="16" font-weight="700" fill="#0e1033">Dashboard</text>
+    <text x="1538" y="350" font-size="12.5" fill="#33365a">Streamlit on EC2,</text>
+    <text x="1538" y="367" font-size="12.5" fill="#33365a">for analysts and team</text>
+  </g>
+
+  <g transform="translate(0,68)">
+  <!-- Lane B arrows -->
+  <g fill="none" stroke="#3a3d5c" stroke-width="1.6">
+    <path d="M214 515 H234" marker-end="url(#a)"/>
+    <path d="M574 515 H604" marker-end="url(#a)"/>
+    <path d="M784 515 H814" marker-end="url(#a)"/>
+    <path d="M1024 515 H1054" marker-end="url(#a)"/>
+    <path d="M1264 515 H1294" marker-end="url(#a)"/>
+  </g>
+
+  <g text-anchor="middle">
+    <rect x="44" y="465" width="170" height="100" rx="14" fill="#fff3c4" stroke="#d9a400" stroke-width="1.5"/>
+    <text x="129" y="503" font-size="16" font-weight="700" fill="#0e1033">Weekly schedule</text>
+    <text x="129" y="525" font-size="12.5" fill="#33365a">EventBridge Scheduler</text>
+    <text x="129" y="542" font-size="12.5" fill="#33365a">starts the check</text>
+
+    <rect x="236" y="445" width="338" height="140" rx="14" fill="#dff3e4" stroke="#3f9b5a" stroke-width="1.5"/>
+    <text x="405" y="478" font-size="16" font-weight="700" fill="#0e1033">Weekly check</text>
+    <text x="405" y="501" font-size="12.5" fill="#33365a">1. Have tactics changed? (report + start date)</text>
+    <text x="405" y="519" font-size="12.5" fill="#33365a">2. Has detection dropped, two weeks in a row?</text>
+    <text x="405" y="541" font-size="12" fill="#4a4d6b">uses the same Prepare step as Part 1</text>
+    <text x="405" y="568" font-size="11.5" fill="#3f9b5a">aml_bq2_weekly</text>
+
+    <rect x="606" y="465" width="178" height="100" rx="14" fill="#ffe3dc" stroke="#d9472b" stroke-width="1.5"/>
+    <text x="695" y="503" font-size="16" font-weight="700" fill="#0e1033">Email alert</text>
+    <text x="695" y="525" font-size="12.5" fill="#33365a">if detection dropped,</text>
+    <text x="695" y="542" font-size="12.5" fill="#33365a">sent through SNS</text>
+
+    <rect x="816" y="465" width="208" height="100" rx="14" fill="#ffe3dc" stroke="#d9472b" stroke-width="1.5"/>
+    <text x="920" y="503" font-size="16" font-weight="700" fill="#0e1033">A person approves</text>
+    <text x="920" y="525" font-size="12.5" fill="#33365a">retraining, from the</text>
+    <text x="920" y="542" font-size="12.5" fill="#33365a">dashboard (SQS queue)</text>
+
+    <rect x="1056" y="465" width="208" height="100" rx="14" fill="#dff3e4" stroke="#3f9b5a" stroke-width="1.5"/>
+    <text x="1160" y="503" font-size="16" font-weight="700" fill="#0e1033">Retrain</text>
+    <text x="1160" y="525" font-size="12.5" fill="#33365a">a new model is trained</text>
+    <text x="1160" y="542" font-size="12.5" fill="#33365a">and compared with the old</text>
+
+    <rect x="1296" y="465" width="210" height="100" rx="14" fill="#ffe3dc" stroke="#d9472b" stroke-width="1.5"/>
+    <text x="1401" y="503" font-size="16" font-weight="700" fill="#0e1033">Second approval</text>
+    <text x="1401" y="525" font-size="12.5" fill="#33365a">a person decides whether</text>
+    <text x="1401" y="542" font-size="12.5" fill="#33365a">to deploy the new model</text>
+  </g>
+
+  <!-- Lane C arrows -->
+  <g fill="none" stroke="#3a3d5c" stroke-width="1.6">
+    <path d="M334 735 H364" marker-end="url(#a)"/>
+    <path d="M654 735 H684" marker-end="url(#a)"/>
+    <path d="M974 735 H1004" marker-end="url(#a)"/>
+  </g>
+  <g text-anchor="middle">
+    <rect x="44" y="695" width="290" height="80" rx="14" fill="#dff3e4" stroke="#3f9b5a" stroke-width="1.5"/>
+    <text x="189" y="728" font-size="16" font-weight="700" fill="#0e1033">Train</text>
+    <text x="189" y="750" font-size="12.5" fill="#33365a">on the HI-Small and HI-Medium sets</text>
+
+    <rect x="366" y="695" width="288" height="80" rx="14" fill="#dff3e4" stroke="#3f9b5a" stroke-width="1.5"/>
+    <text x="510" y="728" font-size="16" font-weight="700" fill="#0e1033">Quality gate</text>
+    <text x="510" y="750" font-size="12.5" fill="#33365a">checks precision, F1 and alerts a day</text>
+
+    <rect x="686" y="695" width="288" height="80" rx="14" fill="#dff3e4" stroke="#3f9b5a" stroke-width="1.5"/>
+    <text x="830" y="728" font-size="16" font-weight="700" fill="#0e1033">Promote the champion</text>
+    <text x="830" y="750" font-size="12.5" fill="#33365a">or keep the old one and email the team</text>
+
+    <rect x="1006" y="695" width="250" height="80" rx="14" fill="#dde8ff" stroke="#5b7bd6" stroke-width="1.5"/>
+    <text x="1131" y="728" font-size="16" font-weight="700" fill="#0e1033">S3 · models/</text>
+    <text x="1131" y="750" font-size="12.5" fill="#33365a">used by Score every week</text>
+  </g>
+  <text x="1280" y="740" font-size="12" font-style="italic" fill="#5a5d78">aml_bq1_train · never sees the HI-Large test set</text>
+
+  <!-- Footer: set up and watched by -->
+  <rect x="24" y="822" width="1652" height="72" rx="18" fill="#0e1033"/>
+  <text x="48" y="866" font-size="15" font-weight="700" fill="#ffe7a3">Set up and watched by:</text>
+  <text x="240" y="866" font-size="14.5" fill="#ffffff">Terraform builds all of it   ·   CloudWatch keeps the logs   ·   an email goes out if any run fails   ·   AWS Budgets tracks the cost</text>
+  </g>
+<metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTphYTA1NmQ5OC1jZGU4LTRhZmEtYjlmYS03NjZjZDlkMTAyZWQAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaP54ksiVUITTHEjvbKr7Lp0AAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDpkYzJiNWM3Ny02ZjM2LTRlNzQtOGJjZS00ZWRiZDNkYjJiNGJscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNorFN0T2HwF2+1lWLsNa1RngAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggPrdWKbTVbrqWeDuvqcv/xKZ0vng+HkGDbJ1Eeo89GVWkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaGxorIceoh2sZWs74vpJpXMAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRMAAAAAAAAAAAAAAAAZGhhc2hYIKfjZUz5JrjHbziSNVqqrVXysZ7TE4l7H4yN0MIsucBuZG5hbWVuanVtYmYgbWFuaWZlc3RqZXhjbHVzaW9uc4GiZXN0YXJ0GSyPZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOmFhMDU2ZDk4LWNkZTgtNGFmYS1iOWZhLTc2NmNkOWQxMDJlZC9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjZkMDdiYTI3LTdlMTUtNDY5Mi1iNjRlLTQ0NjM4NjJhZjYxNHJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCA+t1YptNVuupZ4O6+py//EpnS+eD4eQYNsnUR6jz0ZVaJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggMVdmJ6UFREey7/1qn+UPiwzlTXGNo8qpw3CVcTf9XvqiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggRmeX1/TozmwUZdF4wpcGyZv5kIviVJ9fyR3d33wtX/l0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQAIp3xFVQ1lIJyiNwcBU2R3JW3DmEQLSqpteYXd/mHLbc1xIqDZpzn5FFBkZe8iF4lvof6Z5yb8Ffv7JbhefExg=</c2pa:manifest></metadata></svg>
